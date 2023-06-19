@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+		
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{    
+			width: 762px;
+			height: 581px;
+			background: black;
+			color: lightgreen;
+			padding: 10px;
+		}
+		h1,h2,h3,h4,h5,h6{
+			line-height: 1;
+			margin-bottom: 8px;
+		}
+		hr{
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+		a{
+			color: rgb(72, 194, 72);
+		}
+		a:hover{
+			color: rgb(151, 240, 151);
+		}
+		.action_table{
+			width: 100%;
+		}
+		#action_monitor{
+			font-size: 12px;
+			line-height: 1.1;
+			padding-top: 5px;
+		}
+		#prod_coll_start{
+			padding: 4px 10px;
+			font-size: 16px;
+		}
+		.cl_sl{
+			width: 27px;
+			float: left;
+		}
+		.cl_sku{
+			width: auto;
+			font-weight: bold;
+			float: left;
+			font-family: monospace;
+		}
+		.nav_data{
+			font-size: 17px;
+    		font-family: monospace;
+		}
+		.copy_to_base_url{
+			color: #ceffce;
+			background: #363636;
+			border: 1px solid;
+			padding: 2px 5px;
+		}
+		#action-loader {
+			display: none;
+			width:25px;
+			height:25px;
+			border-radius:50%;
+			border:4px solid;
+			border-color:#03D322 #0000;
+			animation:s1 0.5s infinite;
+			}
+			@keyframes s1 {to{transform: rotate(.5turn)}}
+
+			#total_prog_bar {
+				animation: blinker 1s linear infinite;
+				width:  0%;
+				max-width: 100%;
+			}
+
+			#parts_of_pages {
+				animation: blinker65 500ms linear infinite;
+				padding:3px;
+				background: #b6ffc1; 
+				max-width: 100%;
+				transition: width 1s ease-in-out;
+				display: table;
+			}
+			.div_row{
+				display: table-row;
+			}
+			.div_row:hover{
+				background-color: #00ff2a;
+				color: #000000;
+			}
+			.div_row div{
+				display: table-cell;
+				padding: 3px;
+				vertical-align: middle;
+			}
+
+				@keyframes blinker {
+					50% {
+						opacity: 0.7;
+					}
+				}
+
+				@keyframes blinker65 {
+					50% {
+						opacity: 0.7;
+					}
+				}
+    </style>
+  </head>
+  <body>
+		<table class="action_table">
+			<tr>
+				<td colspan="4">
+					<h2>To get product small thumbnail and update prices and stock.</h2>
+				</td>
+			</tr>
+			<tr>
+				<td><button id="prod_coll_start"> &nbsp; Start &nbsp; </button><div id="action-loader"></div></td>
+				<td style="padding-bottom: 5px;">
+					<div class="nav_data">Copy Done: <span id="copy_done">0</span></div>
+					<div class="nav_data">Already Exist: <span id="exist_found">0</span></div>
+					<div class="nav_data">Total Done: <b><span id="total_done">0</span></b></div>
+				</td>
+				<td style="padding-left: 5px;">
+					<h4>Copy from: https://checkbox.live/products/allcategory</h4>
+					<h4>Copy To: 
+						<input type="text" name="copy_to_base_url" id="copy_to_base_url" class="copy_to_base_url" value="http://docanpatlive.wplocal/"></h4>
+				</td>
+				<td style="padding-bottom: 5px;">
+					<div class="nav_data">Pages Total: <span id="pages_total">0</span></div>
+					<div class="nav_data">Done Pages: <b><span id="pages_done">0</span></b></div>
+					<div class="nav_data">Processing: <span id="pages_processing">0</span></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" style="border: 1px dashed #03D322;border-radius: 3px;overflow: hidden;" id="prog_wrap">
+					<div style="padding:4px;background: #03D322" id="total_prog_bar"></div>
+					<hr style="margin:0;padding:0;border:0;">
+					<div style="" id="parts_of_pages" class="parts_of_pages"></div>
+				</td>
+			</tr>
+		</table>
+  		
+    	<div id="action_monitor"></div>
+		<table id="action_monitor1"><tbody></tbody></table>
+		
+		
+    	<script src="popup.js"></script>
+  </body>
+</html>
